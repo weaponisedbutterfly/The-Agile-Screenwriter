@@ -19668,7 +19668,7 @@
 	var React = __webpack_require__(1);
 	var screenplays = __webpack_require__(160);
 	
-	var ScreenplayDisplay = __webpack_require__(161);
+	// var ScreenplayDisplay = require('./ScreenplayDisplay');
 	
 	var ScreenplayBox = React.createClass({
 		displayName: 'ScreenplayBox',
@@ -19682,11 +19682,43 @@
 		render: function render() {
 			console.log('rendering');
 			return React.createElement(
-				'h4',
+				'div',
 				null,
-				' ',
-				this.state.screenplays[0].Title,
-				' '
+				React.createElement(
+					'h2',
+					null,
+					' Title: '
+				),
+				React.createElement(
+					'h4',
+					null,
+					' ',
+					this.state.screenplays[0].Title
+				),
+				React.createElement(
+					'h2',
+					null,
+					' Tagline: '
+				),
+				React.createElement(
+					'h4',
+					null,
+					' ',
+					this.state.screenplays[0].Tagline,
+					' '
+				),
+				React.createElement(
+					'h2',
+					null,
+					' Logline: '
+				),
+				React.createElement(
+					'h4',
+					{ id: 'Logline' },
+					' ',
+					this.state.screenplays[0].Logline,
+					' '
+				)
 			);
 		}
 	
@@ -19702,7 +19734,7 @@
 	{
 	"Title":"The Wages of Sin",
 	"Screenwriter":"Peter Forbes",
-	"Logline":"The greatest sin ever, is the crucifixion of Christ.  Pontius Pilate tried to wash his hands of that sin and is cursed with immortality until atonement.  Pilate’s  sin  let  Christ’s  blood  be  spilled  and  as  in  Revelation  16:6, ͞shed  the blood of His saints and prophets and be given blood to drink as you deserve.͟And so vampires were created.  Now, after two millennia, the Holy Grail, an artery for vampire creation is back and it’s tearing apart New York City.  The only man who can stop it...The worst sinner in history. ",
+	"Logline":"The greatest sin ever, is the crucifixion of Christ.  Pontius Pilate tried to wash his hands of that sin and is cursed with immortality until atonement.  Pilate’s  sin  let  Christ’s  blood  be  spilled  and  as  in  Revelation  16:6, for they have shed the blood of His saints and prophets and been given blood to drink as they deserve. And so vampires were created.  Now, after two millennia, the Holy Grail, an artery for vampire creation is back and it’s tearing apart New York City.  The only man who can stop it...The worst sinner in history. ",
 	"Tagline": "What did they leave out of the bible? The Vampires!"
 	},
 	
@@ -19715,31 +19747,6 @@
 	]
 	
 	module.exports = screenplays;
-
-/***/ },
-/* 161 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	
-	var ScreenplayDisplay = React.createClass({
-		displayName: 'ScreenplayDisplay',
-	
-	
-		// var ScriptDisplay = this.props
-		render: function render() {
-			return React.createElement(
-				'h1',
-				null,
-				'ScreenplayDisplay'
-			);
-		}
-	
-	});
-	
-	module.exports = ScreenplayDisplay;
 
 /***/ }
 /******/ ]);

@@ -1,4 +1,6 @@
 body {
+	padding: 5px;
+	padding-left: 10px;
   background-image: url("../images/attack_on_titan.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -15,6 +17,13 @@ header {
 }
 
 #app {
-	color: white;
+	width: 95%;
+	padding: 5px;
 	border: ridge;
+	background-color: white;
+	opacity:0.8;
+}
+
+#Logline {
+	text-align: left;
 }
