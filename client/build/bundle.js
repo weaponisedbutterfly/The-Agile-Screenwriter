@@ -19667,6 +19667,8 @@
 	
 	var React = __webpack_require__(1);
 	var screenplays = __webpack_require__(160);
+	var ScreenplaySelect = __webpack_require__(161);
+	var ScreenplayDisplay = __webpack_require__(162);
 	
 	// var ScreenplayDisplay = require('./ScreenplayDisplay');
 	
@@ -19684,41 +19686,8 @@
 			return React.createElement(
 				'div',
 				null,
-				React.createElement(
-					'h2',
-					null,
-					' Title: '
-				),
-				React.createElement(
-					'h4',
-					null,
-					' ',
-					this.state.screenplays[0].Title
-				),
-				React.createElement(
-					'h2',
-					null,
-					' Tagline: '
-				),
-				React.createElement(
-					'h4',
-					null,
-					' ',
-					this.state.screenplays[0].Tagline,
-					' '
-				),
-				React.createElement(
-					'h2',
-					null,
-					' Logline: '
-				),
-				React.createElement(
-					'h4',
-					{ id: 'Logline' },
-					' ',
-					this.state.screenplays[0].Logline,
-					' '
-				)
+				React.createElement(ScreenplaySelect, { onSelectScreenplay: this.setCurrentScreenplay, screenplays: this.state.screenplays }),
+				React.createElement(ScreenplayDisplay, { screenplay: this.state.currentScreenplay })
 			);
 		}
 	
@@ -19747,6 +19716,116 @@
 	]
 	
 	module.exports = screenplays;
+
+/***/ },
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var ScreenplaySelect = React.createClass({
+		displayName: 'ScreenplaySelect',
+	
+	
+		getInitialState: function getInitialState() {
+			return { selectedIndex: null };
+		},
+	
+		handleChange: function handleChange(e) {
+			e.preventDefault();
+			var newIndex = e.target.value;
+			this.setState({ selectedIndex: newIndex });
+			var currentScreenplay = this.props.screenplays[newIndex];
+			this.props.onSelectScreenplay(currentScreenplay);
+		},
+	
+		render: function render() {
+	
+			var options = this.props.screenplays.map(function (screenplay, index) {
+				return React.createElement(
+					'option',
+					{ value: index, key: index },
+					' ',
+					screenplay.name,
+					' '
+				);
+			});
+	
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'select',
+					{ value: this.state.selectedIndex, onChange: this.handleChange },
+					options
+				)
+			);
+		}
+	
+	});
+	
+	module.exports = ScreenplaySelect;
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var ScreenplayDisplay = React.createClass({
+		displayName: 'ScreenplayDisplay',
+	
+	
+		render: function render() {
+			var screenplayDetails = this.props.screenplay || {};
+	
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'h2',
+					null,
+					' Title: '
+				),
+				React.createElement(
+					'h4',
+					null,
+					' ',
+					screenplayDetails.Title
+				),
+				React.createElement(
+					'h2',
+					null,
+					' Tagline: '
+				),
+				React.createElement(
+					'h4',
+					null,
+					' ',
+					screenplayDetails.Tagline,
+					' '
+				),
+				React.createElement(
+					'h2',
+					null,
+					' Logline: '
+				),
+				React.createElement(
+					'h4',
+					{ id: 'Logline' },
+					' ',
+					screenplayDetails.Logline,
+					' '
+				)
+			);
+		}
+	});
+	
+	module.exports = ScreenplayDisplay;
 
 /***/ }
 /******/ ]);
