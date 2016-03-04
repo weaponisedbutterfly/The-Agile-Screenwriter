@@ -19681,6 +19681,10 @@
 			return { screenplays: screenplays, currentScreenplay: screenplays[0] };
 		},
 	
+		setCurrentScreenplay: function setCurrentScreenplay() {
+			this.setState({ currentScreenplay: screenplay });
+		},
+	
 		render: function render() {
 			console.log('rendering');
 			return React.createElement(
@@ -19724,7 +19728,6 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	
 	var ScreenplaySelect = React.createClass({
 		displayName: 'ScreenplaySelect',
 	
@@ -19738,7 +19741,7 @@
 			var newIndex = e.target.value;
 			this.setState({ selectedIndex: newIndex });
 			var currentScreenplay = this.props.screenplays[newIndex];
-			this.props.onSelectScreenplay(currentScreenplay);
+			this.props.onSelectScreenplays(currentScreenplay);
 		},
 	
 		render: function render() {
@@ -19786,6 +19789,7 @@
 			return React.createElement(
 				'div',
 				null,
+				'(return from dropdown to go below here)',
 				React.createElement(
 					'h2',
 					null,
@@ -19795,7 +19799,18 @@
 					'h4',
 					null,
 					' ',
-					screenplayDetails.Title
+					screenplayDetails.Screenwriter
+				),
+				React.createElement(
+					'h2',
+					null,
+					' Screenwriter: '
+				),
+				React.createElement(
+					'h4',
+					null,
+					' ',
+					screenplayDetails.Screenwriter
 				),
 				React.createElement(
 					'h2',

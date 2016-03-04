@@ -12,6 +12,11 @@ var ScreenplayBox = React.createClass({
 		return { screenplays:screenplays, currentScreenplay:screenplays[0]}
 	},
 
+	setCurrentScreenplay: function(){
+		this.setState({currentScreenplay: screenplay});
+	},
+	
+
 	render:function(){
 		console.log('rendering')
 		return(
@@ -21,6 +26,8 @@ var ScreenplayBox = React.createClass({
 			</div>);
 
 	}
+
+
 
 });
 

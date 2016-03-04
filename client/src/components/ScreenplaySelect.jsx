@@ -1,5 +1,4 @@
 var React = require('react');
-
 var ScreenplaySelect = React.createClass({
 
 	getInitialState: function(){
@@ -11,7 +10,7 @@ var ScreenplaySelect = React.createClass({
 		var newIndex = e.target.value;
 		this.setState({selectedIndex: newIndex});
 		var currentScreenplay = this.props.screenplays[newIndex];
-		this.props.onSelectScreenplay( currentScreenplay );
+		this.props.onSelectScreenplays( currentScreenplay );
 	},
 
 	render: function(){
