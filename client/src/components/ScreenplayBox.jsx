@@ -15,7 +15,10 @@ var ScreenplayBox = React.createClass({
 	setCurrentScreenplay: function(){
 		this.setState({currentScreenplay: screenplay});
 	},
-	
+	componentDidMount: function(screenplay){
+	var data = JSON.parse(screenplays);
+	this.setState( { screenplays: data, currentScreenplay: data[0].title })
+	},
 
 	render:function(){
 		console.log('rendering')

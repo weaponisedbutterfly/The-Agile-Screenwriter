@@ -19684,6 +19684,10 @@
 		setCurrentScreenplay: function setCurrentScreenplay() {
 			this.setState({ currentScreenplay: screenplay });
 		},
+		componentDidMount: function componentDidMount(screenplay) {
+			var data = JSON.parse(screenplays);
+			this.setState({ screenplays: data, currentScreenplay: data[0].title });
+		},
 	
 		render: function render() {
 			console.log('rendering');
