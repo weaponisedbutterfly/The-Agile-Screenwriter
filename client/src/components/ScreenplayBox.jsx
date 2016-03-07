@@ -1,5 +1,5 @@
 var React = require('react');
-var screenplays = require('../models/screenplay.json');
+var screenplays = require('../models/screenplay.js');
 var ScreenplaySelect = require('./ScreenplaySelect.jsx');
 var ScreenplayDisplay = require('./ScreenplayDisplay.jsx');
 
@@ -12,28 +12,23 @@ var ScreenplayBox = React.createClass({
 		return { screenplays:screenplays, currentScreenplay:screenplays[0]}
 	},
 
-	setCurrentScreenplay: function(){
-		this.setState({currentScreenplay: screenplay});
-	},
-	componentDidMount: function(screenplay){
-	var data = JSON.parse(screenplays);
-	this.setState( { screenplays: data, currentScreenplay: data[0].title })
+// 	componentDidMount: function(screenplay){
+//     	this.setState( { screenplays: screenplays, currentScreenplay: screenplays[0].title })
+//     },
+	
+	setCurrentScreenplay: function(screenplay){
+		this.setState({ currentScreenplay: screenplay});
 	},
 
 	render:function(){
 		console.log('rendering')
 		return(
 			<div>
-			<ScreenplaySelect onSelectScreenplay={this.setCurrentScreenplay} screenplays={this.state.screenplays}></ScreenplaySelect>
-			<ScreenplayDisplay screenplay={this.state.currentScreenplay}></ScreenplayDisplay>
-			</div>);
-
-	}
-
-
-
+				<ScreenplaySelect onSelectScreenplay={this.setCurrentScreenplay} screenplays={this.state.screenplays}></ScreenplaySelect>
+				<ScreenplayDisplay screenplay={this.state.currentScreenplay}></ScreenplayDisplay>
+			</div>
+		);
+	},
 });
-
-
 
 module.exports = ScreenplayBox;

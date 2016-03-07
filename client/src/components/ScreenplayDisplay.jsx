@@ -7,15 +7,13 @@ var ScreenplayDisplay = React.createClass({
 
 		return(
 			<div>
-			 (return from dropdown to go below here)
-				<h2> Title: </h2>
-				<h4> {screenplayDetails.Screenwriter}</h4>
-				<h2> Screenwriter: </h2>
-				<h4> {screenplayDetails.Screenwriter}</h4>
-				<h2> Tagline: </h2>
-				<h4> {screenplayDetails.Tagline} </h4>
-				<h2> Logline: </h2>
-				<h4 id ='Logline'> {screenplayDetails.Logline} </h4>
+				<h1 id ="title"> {screenplayDetails.title}</h1>
+				<h3 id ="by"> by </h3>
+				<h4 id = "screenwriter"> {screenplayDetails.screenwriter}</h4>
+				<h3> Tagline: </h3>
+				<h4> {screenplayDetails.tagline} </h4>
+				<h3> Logline: </h3>
+				<h4 id ='Logline'> {screenplayDetails.logline} </h4>
 			</div>
 		)
 	}

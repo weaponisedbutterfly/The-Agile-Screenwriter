@@ -19681,12 +19681,12 @@
 			return { screenplays: screenplays, currentScreenplay: screenplays[0] };
 		},
 	
-		setCurrentScreenplay: function setCurrentScreenplay() {
+		// 	componentDidMount: function(screenplay){
+		//     	this.setState( { screenplays: screenplays, currentScreenplay: screenplays[0].title })
+		//     },
+	
+		setCurrentScreenplay: function setCurrentScreenplay(screenplay) {
 			this.setState({ currentScreenplay: screenplay });
-		},
-		componentDidMount: function componentDidMount(screenplay) {
-			var data = JSON.parse(screenplays);
-			this.setState({ screenplays: data, currentScreenplay: data[0].title });
 		},
 	
 		render: function render() {
@@ -19698,7 +19698,6 @@
 				React.createElement(ScreenplayDisplay, { screenplay: this.state.currentScreenplay })
 			);
 		}
-	
 	});
 	
 	module.exports = ScreenplayBox;
@@ -19707,21 +19706,24 @@
 /* 160 */
 /***/ function(module, exports) {
 
-	var screenplays =[
-	{
-	"Title":"The Wages of Sin",
-	"Screenwriter":"Peter Forbes",
-	"Logline":"The greatest sin ever, is the crucifixion of Christ.  Pontius Pilate tried to wash his hands of that sin and is cursed with immortality until atonement.  Pilate’s  sin  let  Christ’s  blood  be  spilled  and  as  in  Revelation  16:6, for they have shed the blood of His saints and prophets and been given blood to drink as they deserve. And so vampires were created.  Now, after two millennia, the Holy Grail, an artery for vampire creation is back and it’s tearing apart New York City.  The only man who can stop it...The worst sinner in history. ",
-	"Tagline": "What did they leave out of the bible? The Vampires!"
-	},
+	"use strict";
 	
-	{
-	"Title":"Downing",
-	"Screenwriter":"Peter Forbes",
-	"Logline":"Teen John finds he is the only gay guy at a party and being kissed by straight boy Daniel doesn’t help. However it is after best friend Chloe if fucked by Daniel while semi-conscious and John confronts him that the night really heats up. Boy kisses boy, drinking, fucking and regret: Just another teenage party. ",
-	"Tagline": "It was just a kiss"
-	}
-	]
+	var screenplays = [{
+	  "title": "Alien",
+	  "screenwriter": "Dan O'Bannon",
+	  "tagline": "In Space No One Can Hear You Scream",
+	  "logline": "When the crew of the mining vessel are awoken from hypersleep by a distress beacon from an unexplored planet they investigate with the promise of a salvage payday. But when a crew member returns to the ship with a parasite attached to his face their problmes have only just begun."
+	}, {
+	  "title": "The Wages of Sin",
+	  "screenwriter": "Peter Forbes",
+	  "tagline": "What did they leave out of the bible? The Vampires!",
+	  "logline": "The greatest sin ever, is the crucifixion of Christ.  Pontius Pilate tried to wash his hands of that sin and is cursed with immortality until atonement.  Pilate’s  sin  let  Christ’s  blood  be  spilled  and  as  in  Revelation  16:6, for they have shed the blood of His saints and prophets and been given blood to drink as they deserve. And so vampires were created.  Now, after two millennia, the Holy Grail, an artery for vampire creation is back and it’s tearing apart New York City.  The only man who can stop it...The worst sinner in history. "
+	}, {
+	  "title": "Downing",
+	  "screenwriter": "Peter Forbes",
+	  "tagline": "It was just a kiss",
+	  "logline": "Teen John finds he is the only gay guy at a party and being kissed by straight boy Daniel doesn’t help. However it is after best friend Chloe if fucked by Daniel while semi-conscious and John confronts him that the night really heats up. Boy kisses boy, drinking, fucking and regret: Just another teenage party. "
+	}];
 	
 	module.exports = screenplays;
 
@@ -19745,7 +19747,7 @@
 			var newIndex = e.target.value;
 			this.setState({ selectedIndex: newIndex });
 			var currentScreenplay = this.props.screenplays[newIndex];
-			this.props.onSelectScreenplays(currentScreenplay);
+			this.props.onSelectScreenplay(currentScreenplay);
 		},
 	
 		render: function render() {
@@ -19755,8 +19757,8 @@
 					'option',
 					{ value: index, key: index },
 					' ',
-					screenplay.name,
-					' '
+					screenplay.title,
+					'  '
 				);
 			});
 	
@@ -19779,66 +19781,60 @@
 /* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	var React = __webpack_require__(1);
 	
 	var ScreenplayDisplay = React.createClass({
-		displayName: 'ScreenplayDisplay',
+		displayName: "ScreenplayDisplay",
 	
 	
 		render: function render() {
 			var screenplayDetails = this.props.screenplay || {};
 	
 			return React.createElement(
-				'div',
+				"div",
 				null,
-				'(return from dropdown to go below here)',
 				React.createElement(
-					'h2',
-					null,
-					' Title: '
+					"h1",
+					{ id: "title" },
+					" ",
+					screenplayDetails.title
 				),
 				React.createElement(
-					'h4',
-					null,
-					' ',
-					screenplayDetails.Screenwriter
+					"h3",
+					{ id: "by" },
+					" by "
 				),
 				React.createElement(
-					'h2',
-					null,
-					' Screenwriter: '
+					"h4",
+					{ id: "screenwriter" },
+					" ",
+					screenplayDetails.screenwriter
 				),
 				React.createElement(
-					'h4',
+					"h3",
 					null,
-					' ',
-					screenplayDetails.Screenwriter
+					" Tagline: "
 				),
 				React.createElement(
-					'h2',
+					"h4",
 					null,
-					' Tagline: '
+					" ",
+					screenplayDetails.tagline,
+					" "
 				),
 				React.createElement(
-					'h4',
+					"h3",
 					null,
-					' ',
-					screenplayDetails.Tagline,
-					' '
+					" Logline: "
 				),
 				React.createElement(
-					'h2',
-					null,
-					' Logline: '
-				),
-				React.createElement(
-					'h4',
-					{ id: 'Logline' },
-					' ',
-					screenplayDetails.Logline,
-					' '
+					"h4",
+					{ id: "Logline" },
+					" ",
+					screenplayDetails.logline,
+					" "
 				)
 			);
 		}
