@@ -19668,9 +19668,8 @@
 	var React = __webpack_require__(1);
 	var screenplays = __webpack_require__(160);
 	var ScreenplaySelect = __webpack_require__(161);
-	var ScreenplayDisplay = __webpack_require__(162);
-	
-	// var ScreenplayDisplay = require('./ScreenplayDisplay');
+	var ScreenplayCreateForm = __webpack_require__(162);
+	var ScreenplayDisplay = __webpack_require__(163);
 	
 	var ScreenplayBox = React.createClass({
 		displayName: 'ScreenplayBox',
@@ -19681,12 +19680,12 @@
 			return { screenplays: screenplays, currentScreenplay: screenplays[0] };
 		},
 	
-		// 	componentDidMount: function(screenplay){
-		//     	this.setState( { screenplays: screenplays, currentScreenplay: screenplays[0].title })
-		//     },
-	
 		setCurrentScreenplay: function setCurrentScreenplay(screenplay) {
 			this.setState({ currentScreenplay: screenplay });
+		},
+	
+		handleScreenplaySubmit: function handleScreenplaySubmit(screenplay) {
+			console.log(screenplay);
 		},
 	
 		render: function render() {
@@ -19695,9 +19694,11 @@
 				'div',
 				null,
 				React.createElement(ScreenplaySelect, { onSelectScreenplay: this.setCurrentScreenplay, screenplays: this.state.screenplays }),
-				React.createElement(ScreenplayDisplay, { screenplay: this.state.currentScreenplay })
+				React.createElement(ScreenplayDisplay, { screenplay: this.state.currentScreenplay }),
+				React.createElement(ScreenplayCreateForm, { onScreenplaySubmit: this.handleScreenplaySubmit })
 			);
 		}
+	
 	});
 	
 	module.exports = ScreenplayBox;
@@ -19712,7 +19713,7 @@
 	  "title": "Alien",
 	  "screenwriter": "Dan O'Bannon",
 	  "tagline": "In Space No One Can Hear You Scream",
-	  "logline": "When the crew of the mining vessel are awoken from hypersleep by a distress beacon from an unexplored planet they investigate with the promise of a salvage payday. But when a crew member returns to the ship with a parasite attached to his face their problmes have only just begun."
+	  "logline": "When the crew of the mining vessel Nostromo are awoken from hypersleep by a distress beacon from an unexplored planet they investigate with the promise of a salvage payday buut when a crew member returns to the ship with a parasite attached to his face their problmes have only just begun."
 	}, {
 	  "title": "The Wages of Sin",
 	  "screenwriter": "Peter Forbes",
@@ -19779,6 +19780,132 @@
 
 /***/ },
 /* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var ScreenplayCreateForm = React.createClass({
+		displayName: 'ScreenplayCreateForm',
+	
+	
+		getInitialState: function getInitialState() {
+			return { title: '', screenwriter: '', tagline: '', logline: '' };
+		},
+		handleTitleChange: function handleTitleChange(e) {
+			this.setState({ title: e.target.value });
+		},
+		handleScreenwriterChange: function handleScreenwriterChange(e) {
+			this.setState({ screenwriter: e.target.value });
+		},
+		handleTaglineChange: function handleTaglineChange(e) {
+			this.setState({ tagline: e.target.value });
+		},
+		handleLoglineChange: function handleLoglineChange(e) {
+			this.setState({ logline: e.target.value });
+		},
+		handleSubmit: function handleSubmit(e) {
+			e.preventDefault();
+			var title = this.state.title.trim();
+			var screenwriter = this.state.screenwriter.trim();
+			var tagline = this.state.tagline.trim();
+			var logline = this.state.logline.trim();
+			if (!title || !screenwriter || !tagline || !logline) {
+				return;
+			}
+			this.props.onScreenplaySubmit({ title: title, screenwriter: screenwriter, tagline: tagline, logline: logline });
+			this.setState({ title: '', screenwriter: '', tagline: '', logline: '' });
+		},
+		render: function render() {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'h3',
+					{ id: 'startNew' },
+					' Start New Script '
+				),
+				React.createElement(
+					'form',
+					{ className: 'screenplayCreateForm', onSubmit: this.handleSubmit },
+					React.createElement(
+						'ul',
+						{ 'class': 'formList' },
+						React.createElement(
+							'li',
+							null,
+							React.createElement(
+								'label',
+								{ className: 'createScript' },
+								'Title:'
+							),
+							React.createElement('input', {
+								type: 'text',
+								size: '110',
+								placeholder: 'Don’t worry if it’s not right you will likely change it later. Ideally it will immediately give you a feel for the movie. e.g. Alien',
+								value: this.state.title,
+								onChange: this.handleTitleChange
+							})
+						),
+						React.createElement(
+							'li',
+							null,
+							React.createElement(
+								'label',
+								{ className: 'createScript' },
+								'Screenwriter:'
+							),
+							React.createElement('input', {
+								type: 'text',
+								size: '98',
+								placeholder: 'Your Name. Come on be confident. Don\'t hide your light under a bushel.',
+								value: this.state.screenwriter,
+								onChange: this.handleScreenwriterChange
+							})
+						),
+						React.createElement(
+							'li',
+							null,
+							React.createElement(
+								'label',
+								{ className: 'createScript' },
+								'Tagline:'
+							),
+							React.createElement('input', {
+								type: 'text',
+								size: '107',
+								placeholder: 'What would the line on the poster be?  e.g. “In Space No One Can Hear You Scream”.',
+								value: this.state.tagline,
+								onChange: this.handleTaglineChange
+							})
+						),
+						React.createElement(
+							'li',
+							null,
+							React.createElement(
+								'label',
+								{ className: 'createScript' },
+								'Logline:'
+							),
+							React.createElement('input', {
+								type: 'text',
+								size: '107',
+								placeholder: 'What happens in your story in one short paragraph or 25 words or less. ',
+								value: this.state.logline,
+								onChange: this.handleLoglineChange
+							})
+						),
+						React.createElement('input', { type: 'submit', value: 'Create' })
+					)
+				)
+			);
+		}
+	});
+	
+	module.exports = ScreenplayCreateForm;
+
+/***/ },
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";

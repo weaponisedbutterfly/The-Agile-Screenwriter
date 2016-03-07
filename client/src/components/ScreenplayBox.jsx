@@ -1,9 +1,9 @@
 var React = require('react');
 var screenplays = require('../models/screenplay.js');
 var ScreenplaySelect = require('./ScreenplaySelect.jsx');
+var ScreenplayCreateForm = require('./ScreenplayCreateForm.jsx');
 var ScreenplayDisplay = require('./ScreenplayDisplay.jsx');
 
-// var ScreenplayDisplay = require('./ScreenplayDisplay');
 
 var ScreenplayBox = React.createClass({
 
@@ -12,12 +12,15 @@ var ScreenplayBox = React.createClass({
 		return { screenplays:screenplays, currentScreenplay:screenplays[0]}
 	},
 
-// 	componentDidMount: function(screenplay){
-//     	this.setState( { screenplays: screenplays, currentScreenplay: screenplays[0].title })
-//     },
 	
 	setCurrentScreenplay: function(screenplay){
 		this.setState({ currentScreenplay: screenplay});
+	},
+
+	handleScreenplaySubmit: function(screenplay){
+		console.log(screenplay);
+
+
 	},
 
 	render:function(){
@@ -26,9 +29,12 @@ var ScreenplayBox = React.createClass({
 			<div>
 				<ScreenplaySelect onSelectScreenplay={this.setCurrentScreenplay} screenplays={this.state.screenplays}></ScreenplaySelect>
 				<ScreenplayDisplay screenplay={this.state.currentScreenplay}></ScreenplayDisplay>
+				<ScreenplayCreateForm onScreenplaySubmit={this.handleScreenplaySubmit}></ScreenplayCreateForm>
 			</div>
 		);
 	},
+
+
 });
 
 module.exports = ScreenplayBox;

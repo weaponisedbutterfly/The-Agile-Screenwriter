@@ -3,7 +3,7 @@ var screenplays =[
 "title":"Alien",
 "screenwriter":"Dan O'Bannon",
 "tagline": "In Space No One Can Hear You Scream",
-"logline":"When the crew of the mining vessel are awoken from hypersleep by a distress beacon from an unexplored planet they investigate with the promise of a salvage payday. But when a crew member returns to the ship with a parasite attached to his face their problmes have only just begun.",
+"logline":"When the crew of the mining vessel Nostromo are awoken from hypersleep by a distress beacon from an unexplored planet they investigate with the promise of a salvage payday buut when a crew member returns to the ship with a parasite attached to his face their problmes have only just begun.",
 },
 
 {

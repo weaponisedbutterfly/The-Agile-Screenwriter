@@ -3,11 +3,11 @@ body {
 	padding-left: 10px;
 	background-color: black;
   /*background-image: url("../images/attack_on_titan.jpg");*/
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-image: blur;
-  background-size: 100%, 100%;
-  font-family: courier;
+/*	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-image: blur;
+	background-size: 100%, 100%;*/
+	font-family: courier;
 }
 
 header {
@@ -26,24 +26,31 @@ header {
 }
 
 #Logline {
-	text-align: left;
-	text-align: justify;
+	text-align: left;;
+	width: 75%;
+	padding-left: 15%;
 }
 
 h3 {
 	text-decoration: underline;
 }
 
-#title {
-	text-align: center;
-}
-
-#by {
+#title, #by, #screenwriter, #startNew  {
 	text-align: center;
 	text-decoration: none;
 }
 
+li {
+	list-style: none;
+}
+
+
+/*#by {
+	text-align: center;
+	text-decoration: none;
+}*/
+/*
 #screenwriter {
 	text-align: center;
 	text-decoration: none;
-}
+}*/
