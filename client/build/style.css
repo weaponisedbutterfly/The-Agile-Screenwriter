@@ -17,13 +17,14 @@ header {
 	text-shadow: 2px 1px black;
 }
 
+
 #app {
-	width: 95%;
-	padding: 5px;
+	width: 85%;
 	border: ridge;
 	background-color: white;
 	opacity:0.8;
 }
+
 
 #Logline {
 	text-align: left;;
@@ -44,6 +45,20 @@ li {
 	list-style: none;
 }
 
+.inputLabel {
+	width: 3em;
+	float: left;
+	margin-right: 0.5em;
+	display: block
+}
+
+.scriptInput {
+	margin-left: 7em;
+}
+
+.inputButton{
+
+}
 
 /*#by {
 	text-align: center;

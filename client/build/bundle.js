@@ -19836,11 +19836,12 @@
 							null,
 							React.createElement(
 								'label',
-								{ className: 'createScript' },
+								{ className: 'inputLabel' },
 								'Title:'
 							),
 							React.createElement('input', {
 								type: 'text',
+								className: 'scriptInput',
 								size: '110',
 								placeholder: 'Don’t worry if it’s not right you will likely change it later. Ideally it will immediately give you a feel for the movie. e.g. Alien',
 								value: this.state.title,
@@ -19852,12 +19853,13 @@
 							null,
 							React.createElement(
 								'label',
-								{ className: 'createScript' },
+								{ className: 'inputLabel' },
 								'Screenwriter:'
 							),
 							React.createElement('input', {
 								type: 'text',
-								size: '98',
+								className: 'scriptInput',
+								size: '110',
 								placeholder: 'Your Name. Come on be confident. Don\'t hide your light under a bushel.',
 								value: this.state.screenwriter,
 								onChange: this.handleScreenwriterChange
@@ -19868,12 +19870,13 @@
 							null,
 							React.createElement(
 								'label',
-								{ className: 'createScript' },
+								{ className: 'inputLabel' },
 								'Tagline:'
 							),
 							React.createElement('input', {
 								type: 'text',
-								size: '107',
+								className: 'scriptInput',
+								size: '110',
 								placeholder: 'What would the line on the poster be?  e.g. “In Space No One Can Hear You Scream”.',
 								value: this.state.tagline,
 								onChange: this.handleTaglineChange
@@ -19884,18 +19887,19 @@
 							null,
 							React.createElement(
 								'label',
-								{ className: 'createScript' },
+								{ className: 'inputLabel' },
 								'Logline:'
 							),
 							React.createElement('input', {
 								type: 'text',
-								size: '107',
+								className: 'scriptInput',
+								size: '110',
 								placeholder: 'What happens in your story in one short paragraph or 25 words or less. ',
 								value: this.state.logline,
 								onChange: this.handleLoglineChange
 							})
 						),
-						React.createElement('input', { type: 'submit', value: 'Create' })
+						React.createElement('input', { className: 'inputButton', type: 'submit', value: 'Create' })
 					)
 				)
 			);

@@ -35,42 +35,46 @@ var ScreenplayCreateForm = React.createClass({
 			<form className="screenplayCreateForm" onSubmit={this.handleSubmit}>
 			<ul class="formList">
 				<li>
-				<label className = "createScript">Title:</label>
+				<label className = "inputLabel">Title:</label>
 				<input
 				type="text"
+				className = "scriptInput"
 				size="110"
 				placeholder="Don’t worry if it’s not right you will likely change it later. Ideally it will immediately give you a feel for the movie. e.g. Alien"
 				value={this.state.title}
 				onChange={this.handleTitleChange}
 				/></li>
 				<li>
-				<label className = "createScript">Screenwriter:</label>
+				<label className = "inputLabel">Screenwriter:</label>
 				<input
 				type="text"
-				size="98"
+				className = "scriptInput"
+				size="110"
 				placeholder="Your Name. Come on be confident. Don't hide your light under a bushel."
 				value={this.state.screenwriter}
 				onChange={this.handleScreenwriterChange}
 				/></li>
 				<li>
-				<label className= "createScript">Tagline:</label>
+				<label className= "inputLabel">Tagline:</label>
 				<input
 				type="text"
-				size="107"
+				className = "scriptInput"
+				size="110"
 				placeholder="What would the line on the poster be?  e.g. “In Space No One Can Hear You Scream”."
 				value={this.state.tagline}
 				onChange={this.handleTaglineChange}
 				/></li>
 				<li>
-				<label className= "createScript">Logline:</label>
+				<label className= "inputLabel">Logline:</label>
 				<input
 				type="text"
-				size="107"
+				className = "scriptInput"
+				size="110"
 				placeholder="What happens in your story in one short paragraph or 25 words or less. "
 				value={this.state.logline}
 				onChange={this.handleLoglineChange}
 				/></li>
-			<input type="submit" value="Create" />
+			<input className = "inputButton"type="submit" value="Create" />
 			</ul>
 			</form>
 			</div>
