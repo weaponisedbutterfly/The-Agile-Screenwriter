@@ -1,5 +1,4 @@
 var React = require('react');
-var screenplays = require('../models/screenplay.js');
 var ScreenplaySelect = require('./ScreenplaySelect.jsx');
 var ScreenplayCreateForm = require('./ScreenplayCreateForm.jsx');
 var ScreenplayDisplay = require('./ScreenplayDisplay.jsx');
@@ -8,20 +7,27 @@ var ScreenplayDisplay = require('./ScreenplayDisplay.jsx');
 var ScreenplayBox = React.createClass({
 
 	getInitialState: function(){
-		console.log('getting inital state', screenplays)
-		return { screenplays:screenplays, currentScreenplay:screenplays[0]}
+		return { screenplays:[], currentScreenplay:{}}
 	},
 
-	
 	setCurrentScreenplay: function(screenplay){
 		this.setState({ currentScreenplay: screenplay});
 	},
 
-	handleScreenplaySubmit: function(screenplay){
-		console.log(screenplay);
-
-
+	componentDidMount:function(){
+		var url = "http://localhost:3000/api"
+		var request = new XMLHttpRequest();
+		request.open("GET", url);
+		request.onload = function(){
+			var data = JSON.parse(request.responseText);
+			this.setState( {screenplays: data, currentScreenplay: data[0]})
+		}.bind(this)
+		request.send(null);
 	},
+
+	// handleScreenplaySubmit: function(screenplay){
+	// 	console.log(screenplay);
+	// },
 
 	render:function(){
 		console.log('rendering')
