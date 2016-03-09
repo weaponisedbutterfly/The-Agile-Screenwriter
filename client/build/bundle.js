@@ -19666,9 +19666,9 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var ScreenplaySelect = __webpack_require__(161);
-	var ScreenplayCreateForm = __webpack_require__(162);
-	var ScreenplayDisplay = __webpack_require__(163);
+	var ScreenplaySelect = __webpack_require__(160);
+	var ScreenplayCreateForm = __webpack_require__(161);
+	var ScreenplayDisplay = __webpack_require__(162);
 	
 	var ScreenplayBox = React.createClass({
 		displayName: 'ScreenplayBox',
@@ -19683,7 +19683,7 @@
 		},
 	
 		componentDidMount: function componentDidMount() {
-			var url = "http://localhost:3000/api";
+			var url = "http://localhost:3000/screenplays";
 			var request = new XMLHttpRequest();
 			request.open("GET", url);
 			request.onload = function () {
@@ -19693,9 +19693,31 @@
 			request.send(null);
 		},
 	
-		// handleScreenplaySubmit: function(screenplay){
-		// 	console.log(screenplay);
-		// },
+		handleScreenplaySubmit: function handleScreenplaySubmit(screenplay) {
+			console.log('screenplay', screenplay);
+			screenplay.id = Date.now();
+	
+			//updating front end - optimistic update
+			var oldScreenplays = this.state.screenplays;
+			var newScreenplays = oldScreenplays.concat([screenplay]);
+			this.setState({ screenplays: newScreenplays });
+	
+			//updating data in database
+			var url = "http://localhost:3000/screenplays";
+			var request = new XMLHttpRequest();
+			request.open("POST", url);
+			request.setRequestHeader("Content-Type", "application/json");
+	
+			//updating once have database information
+			request.onload = function () {
+				if (request.status === 200) {
+					var receivedScreenplays = JSON.parse(request.responseText);
+					this.setState({ screenplays: receivedScreenplays });
+				}
+			}.bind(this);
+	
+			request.send(JSON.stringify(screenplay));
+		},
 	
 		render: function render() {
 			console.log('rendering');
@@ -19713,8 +19735,7 @@
 	module.exports = ScreenplayBox;
 
 /***/ },
-/* 160 */,
-/* 161 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19764,7 +19785,7 @@
 	module.exports = ScreenplaySelect;
 
 /***/ },
-/* 162 */
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19894,7 +19915,7 @@
 	module.exports = ScreenplayCreateForm;
 
 /***/ },
-/* 163 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";

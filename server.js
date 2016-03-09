@@ -3,21 +3,43 @@ var app = express();
 var path = require('path');
 var Screenplay = require('./models/screenplay');
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+
 mongoose.connect('mongodb://localhost/ag_screen_app');
 
 app.use(express.static('client/build'));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
 
 app.get('/', function(req, res){
 	res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
 
-app.get("/api", function(req, res){
+app.get("/screenplays", function(req, res){
 	Screenplay.find(function(err, screenplays){
 		if(err) console.log(err)
 		//res.render('index', { screenplays: screenplays});
 		res.json(screenplays);
 	})
+});
+
+app.post("/screenplays", function(req, res){
+	console.log('req body', req)
+	//create a screenplay with the information from request body
+	var newScreenplay = new Screenplay(req.body)
+
+	//save it
+	newScreenplay.save(function(){
+		//when the screenplay has saved, pass back all the screenplays from db
+		Screenplay.find(function(err, screenplays){
+			if(err) console.log(err)
+			res.json(screenplays);
+		})
+	})
+
 });
 
 var server = app.listen(3000, function(){

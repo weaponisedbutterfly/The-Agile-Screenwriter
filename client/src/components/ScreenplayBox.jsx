@@ -15,7 +15,7 @@ var ScreenplayBox = React.createClass({
 	},
 
 	componentDidMount:function(){
-		var url = "http://localhost:3000/api"
+		var url = "http://localhost:3000/screenplays"
 		var request = new XMLHttpRequest();
 		request.open("GET", url);
 		request.onload = function(){
@@ -25,9 +25,31 @@ var ScreenplayBox = React.createClass({
 		request.send(null);
 	},
 
-	// handleScreenplaySubmit: function(screenplay){
-	// 	console.log(screenplay);
-	// },
+	handleScreenplaySubmit: function(screenplay) {
+		console.log('screenplay', screenplay)
+		screenplay.id = Date.now();
+
+		//updating front end - optimistic update
+		var oldScreenplays = this.state.screenplays;
+		var newScreenplays = oldScreenplays.concat( [screenplay] );
+		this.setState({screenplays: newScreenplays});
+
+		//updating data in database
+		var url = "http://localhost:3000/screenplays"
+		var request = new XMLHttpRequest();
+		request.open("POST", url);
+		request.setRequestHeader("Content-Type", "application/json");
+
+		//updating once have database information
+		request.onload = function(){
+			if(request.status === 200){
+				var receivedScreenplays = JSON.parse(request.responseText);
+				this.setState({screenplays: receivedScreenplays});
+			}
+		}.bind(this);
+
+		request.send(JSON.stringify(screenplay));
+	},
 
 	render:function(){
 		console.log('rendering')
@@ -39,7 +61,7 @@ var ScreenplayBox = React.createClass({
 			</div>
 		);
 	},
-
+ 
 
 });
 
