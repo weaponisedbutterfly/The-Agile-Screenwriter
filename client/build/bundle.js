@@ -19756,11 +19756,11 @@
 /* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	var React = __webpack_require__(1);
 	var ScreenplaySelect = React.createClass({
-		displayName: 'ScreenplaySelect',
+		displayName: "ScreenplaySelect",
 	
 	
 		getInitialState: function getInitialState() {
@@ -19779,20 +19779,25 @@
 	
 			var options = this.props.screenplays.map(function (screenplay, index) {
 				return React.createElement(
-					'option',
+					"option",
 					{ value: index, key: index },
-					' ',
+					" ",
 					screenplay.title,
-					'  '
+					"  "
 				);
 			});
 	
 			return React.createElement(
-				'div',
-				null,
+				"div",
+				{ className: "scriptSelect" },
 				React.createElement(
-					'select',
-					{ value: this.state.selectedIndex, onChange: this.handleChange },
+					"h3",
+					null,
+					"Select Screenplay"
+				),
+				React.createElement(
+					"select",
+					{ className: "selectDropDown", value: this.state.selectedIndex, onChange: this.handleChange },
 					options
 				)
 			);
@@ -19843,10 +19848,10 @@
 		render: function render() {
 			return React.createElement(
 				'div',
-				null,
+				{ className: 'createScript' },
 				React.createElement(
 					'h3',
-					{ id: 'startNew' },
+					{ className: 'startNewScript' },
 					' Start New Script '
 				),
 				React.createElement(
@@ -19863,6 +19868,7 @@
 								{ className: 'inputLabel' },
 								'Title:'
 							),
+							React.createElement('br', null),
 							React.createElement('input', {
 								type: 'text',
 								className: 'scriptInput',
@@ -19880,6 +19886,7 @@
 								{ className: 'inputLabel' },
 								'Screenwriter:'
 							),
+							React.createElement('br', null),
 							React.createElement('input', {
 								type: 'text',
 								className: 'scriptInput'
@@ -19897,11 +19904,12 @@
 								{ className: 'inputLabel' },
 								'Tagline:'
 							),
+							React.createElement('br', null),
 							React.createElement('input', {
 								type: 'text',
 								className: 'scriptInput'
 								// size="110"
-								, placeholder: 'What would the line on the poster be?  e.g. “In Space No One Can Hear You Scream”.',
+								, placeholder: 'What would the line on the poster be?  e.g. “In Space No One Can Hear You Scream.',
 								value: this.state.tagline,
 								onChange: this.handleTaglineChange
 							})
@@ -19914,16 +19922,17 @@
 								{ className: 'inputLabel' },
 								'Logline:'
 							),
+							React.createElement('br', null),
 							React.createElement('input', {
 								type: 'text',
 								className: 'scriptInput'
 								// size="110"
-								, placeholder: 'What happens in your story in one short paragraph or 25 words or less. ',
+								, placeholder: 'What happens in your story in one short paragraph or 25 words or less.',
 								value: this.state.logline,
 								onChange: this.handleLoglineChange
 							})
 						),
-						React.createElement('input', { className: 'inputButton', type: 'submit', value: 'Create' })
+						React.createElement('input', { className: 'createButton', type: 'submit', value: 'Create Screenplay' })
 					)
 				)
 			);
@@ -19953,51 +19962,54 @@
 	
 			return React.createElement(
 				"div",
-				null,
+				{ className: "scriptDisplay" },
 				React.createElement(
 					"h1",
-					{ id: "title" },
+					{ className: "title" },
 					" ",
 					screenplayDetails.title
 				),
 				React.createElement(
 					"h3",
-					{ id: "by" },
+					{ className: "by" },
 					" by "
 				),
 				React.createElement(
 					"h4",
-					{ id: "screenwriter" },
+					{ className: "screenwriter" },
 					" ",
 					screenplayDetails.screenwriter
 				),
 				React.createElement(
 					"h3",
-					null,
+					{ className: "taglineHeader" },
 					" Tagline: "
 				),
+				React.createElement("p", null),
 				React.createElement(
 					"h4",
-					null,
+					{ className: "taglineContent" },
 					" ",
 					screenplayDetails.tagline,
 					" "
 				),
+				React.createElement("p", null),
 				React.createElement(
 					"h3",
-					null,
+					{ className: "loglineHeader" },
 					" Logline: "
 				),
+				React.createElement("p", null),
 				React.createElement(
 					"h4",
-					{ id: "Logline" },
+					{ className: "loglineContent" },
 					" ",
 					screenplayDetails.logline,
 					" "
 				),
 				React.createElement(
 					"button",
-					{ onClick: this.handleDelete },
+					{ className: "deleteButton", onClick: this.handleDelete },
 					"Delete Screenplay?"
 				)
 			);

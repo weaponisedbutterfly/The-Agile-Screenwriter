@@ -10,15 +10,18 @@ var ScreenplayDisplay = React.createClass({
 		var screenplayDetails = this.props.screenplay || {}
 
 		return(
-			<div>
-				<h1 id ="title"> {screenplayDetails.title}</h1>
-				<h3 id ="by"> by </h3>
-				<h4 id = "screenwriter"> {screenplayDetails.screenwriter}</h4>
-				<h3> Tagline: </h3>
-				<h4> {screenplayDetails.tagline} </h4>
-				<h3> Logline: </h3>
-				<h4 id ='Logline'> {screenplayDetails.logline} </h4>
-				<button onClick={this.handleDelete}>Delete Screenplay?</button>
+			<div className = "scriptDisplay">
+				<h1 className ="title"> {screenplayDetails.title}</h1>
+				<h3 className ="by"> by </h3>
+				<h4 className = "screenwriter"> {screenplayDetails.screenwriter}</h4>
+				<h3 className ='taglineHeader'> Tagline: </h3>
+				<p></p>
+				<h4 className ='taglineContent'> {screenplayDetails.tagline} </h4>
+				<p></p>
+				<h3 className ='loglineHeader'> Logline: </h3>
+				<p></p>
+				<h4 className ='loglineContent'> {screenplayDetails.logline} </h4>
+				<button className = "deleteButton" onClick={this.handleDelete}>Delete Screenplay?</button>
 			</div>
 		)
 	}

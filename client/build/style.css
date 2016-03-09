@@ -1,6 +1,6 @@
 body {
 	padding: 5px;
-	padding-left: 10px;
+	/*padding-left: 10px;*/
 	background-color: black;
   /*background-image: url("../images/attack_on_titan.jpg");*/
 /*	background-repeat: no-repeat;
@@ -18,58 +18,113 @@ header {
 }
 
 
-#app {
-	width: 85%;
-	border: ridge;
-	background-color: white;
-	opacity:0.8;
-}
-
-
-#Logline {
-	text-align: left;;
+.scriptSelect {
 	width: 75%;
-	padding-left: 15%;
+	background-color: white;
+	padding-top: 5px;
+	line-height: 25px;
+	margin: auto;
+	text-align: center;
+	color: black;
 }
 
-h3 {
-	text-decoration: underline;
+.selectDropDown {
+	background-color: white;
+	color: black;
+	margin-bottom: 15px;
+	padding-bottom: 5px;
 }
 
-#title, #by, #screenwriter, #startNew  {
+
+
+.scriptDisplay {
+	width: 75%;
+	background-color: white;
+	margin: auto;
+	margin-top: 5px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+
+}
+
+.title, .by, .screenwriter {
 	text-align: center;
 	text-decoration: none;
+	padding-bottom: 20px;
 }
+
+.taglineHeader {
+	width: 75%;
+	margin: auto;
+}
+
+.taglineContent{
+	width: 75%;
+	margin: auto;
+	font-weight: 400;
+}
+
+.loglineHeader {
+	width: 75%;
+	margin: auto;
+}
+
+.loglineContent {
+	width: 75%;
+	margin: auto;
+	font-weight: 400;
+}
+
+
+.deleteButton {
+	margin-left: 65%;
+	margin-right: 10%;
+	margin-top: 55px;
+	color: black;
+	background-color: white;
+	border: 2px solid;
+    border-radius: 25px;
+
+}
+
+.createScript {
+	width: 75%;
+	background-color: white;
+	margin: auto;
+	margin-top: 5px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+.startNewScript {
+	text-align: center;
+}
+
 
 li {
 	list-style: none;
+	text-align: center;
 }
+
 
 .inputLabel {
-	width: 3em;
-	float: left;
-	margin-right: 0.5em;
-	display: block
+	text-align: none;
 }
 
 .scriptInput {
-	margin-left: 7em;
+	margin-top: 3px;
+	margin-bottom: 13px;
+	text-align: left;
+	width: 75%;
+	line-height: 35px;
 }
 
-.inputButton{
-
+.createButton {
+	margin-left: 65%;
+	margin-right: 10%;
+	margin-top: 15px;
+	color: black;
+	background-color: white;
+	border: 2px solid;
+    border-radius: 25px;
 }
-
-.scriptInput {
-
-}
-
-/*#by {
-	text-align: center;
-	text-decoration: none;
-}*/
-/*
-#screenwriter {
-	text-align: center;
-	text-decoration: none;
-}*/

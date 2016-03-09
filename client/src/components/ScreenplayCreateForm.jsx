@@ -30,12 +30,13 @@ var ScreenplayCreateForm = React.createClass({
 	},
 	render: function() {
 		return (
-			<div>
-			<h3 id="startNew"> Start New Script </h3>
+			<div className = "createScript">
+			<h3 className = "startNewScript"> Start New Script </h3>
 			<form className="screenplayCreateForm" onSubmit={this.handleSubmit}>
 			<ul class="formList">
 				<li>
 				<label className = "inputLabel">Title:</label>
+				<br></br>
 				<input
 				type="text"
 				className = "scriptInput"
@@ -46,6 +47,7 @@ var ScreenplayCreateForm = React.createClass({
 				/></li>
 				<li>
 				<label className = "inputLabel">Screenwriter:</label>
+				<br></br>
 				<input
 				type="text"
 				className = "scriptInput"
@@ -56,25 +58,27 @@ var ScreenplayCreateForm = React.createClass({
 				/></li>
 				<li>
 				<label className= "inputLabel">Tagline:</label>
+				<br></br>
 				<input
 				type="text"
 				className = "scriptInput"
 				// size="110"
-				placeholder="What would the line on the poster be?  e.g. “In Space No One Can Hear You Scream”."
+				placeholder="What would the line on the poster be?  e.g. “In Space No One Can Hear You Scream."
 				value={this.state.tagline}
 				onChange={this.handleTaglineChange}
 				/></li>
 				<li>
 				<label className= "inputLabel">Logline:</label>
+				<br></br>
 				<input
 				type="text"
 				className = "scriptInput"
 				// size="110"
-				placeholder="What happens in your story in one short paragraph or 25 words or less. "
+				placeholder="What happens in your story in one short paragraph or 25 words or less."
 				value={this.state.logline}
 				onChange={this.handleLoglineChange}
 				/></li>
-			<input className = "inputButton"type="submit" value="Create" />
+			<input className = "createButton"type="submit" value="Create Screenplay" />
 			</ul>
 			</form>
 			</div>

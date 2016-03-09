@@ -74,7 +74,7 @@ var ScreenplayBox = React.createClass({
 		return(
 			<div>
 				<ScreenplaySelect onSelectScreenplay={this.setCurrentScreenplay} screenplays={this.state.screenplays}></ScreenplaySelect>
-				<ScreenplayDisplay screenplay={this.state.currentScreenplay} onScreenplayDelete={this.handleScreenplayDelete}></ScreenplayDisplay>
+				<ScreenplayDisplay  screenplay={this.state.currentScreenplay} onScreenplayDelete={this.handleScreenplayDelete}></ScreenplayDisplay>
 				<ScreenplayCreateForm onScreenplaySubmit={this.handleScreenplaySubmit}></ScreenplayCreateForm>
 			</div>
 		);

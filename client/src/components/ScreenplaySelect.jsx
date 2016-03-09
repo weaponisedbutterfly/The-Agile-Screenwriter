@@ -20,8 +20,9 @@ var ScreenplaySelect = React.createClass({
 		});
 
 		return(
-			<div> 
-				<select value= {this.state.selectedIndex} onChange={this.handleChange}>
+			<div className = "scriptSelect"> 
+			<h3>Select Screenplay</h3>
+				<select className = "selectDropDown"value= {this.state.selectedIndex} onChange={this.handleChange}>
 				{options}
 				</select>
 			</div>
