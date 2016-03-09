@@ -42,6 +42,20 @@ app.post("/screenplays", function(req, res){
 
 });
 
+app.post('/screenplays/:id/delete', function(req, res){
+  //DELETE
+  Screenplay.findByIdAndRemove(req.params.id, function(err) {
+    if (err) console.log(err);
+
+    console.log('Screenplay deleted!');
+    Screenplay.find(function(err, screenplays) {
+      if(err) console.log(err)
+      res.json(screenplays);
+    })
+  });
+});
+
+
 var server = app.listen(3000, function(){
 	var host = server.address().address;
 	var port = server.address().port;

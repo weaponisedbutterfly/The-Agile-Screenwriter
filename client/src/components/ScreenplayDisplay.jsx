@@ -1,6 +1,10 @@
-var React = require('react');
+	var React = require('react');
 
 var ScreenplayDisplay = React.createClass({
+
+	handleDelete: function(){
+	  this.props.onScreenplayDelete(this.props.screenplay._id);
+	},
 
 	render: function(){
 		var screenplayDetails = this.props.screenplay || {}
@@ -14,9 +18,11 @@ var ScreenplayDisplay = React.createClass({
 				<h4> {screenplayDetails.tagline} </h4>
 				<h3> Logline: </h3>
 				<h4 id ='Logline'> {screenplayDetails.logline} </h4>
+				<button onClick={this.handleDelete}>Delete Screenplay?</button>
 			</div>
 		)
 	}
+
 });
 
 

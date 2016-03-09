@@ -51,12 +51,30 @@ var ScreenplayBox = React.createClass({
 		request.send(JSON.stringify(screenplay));
 	},
 
+		handleScreenplayDelete: function(id){
+			//delete data from database
+		var url = "http://localhost:3000/screenplays/" + id + "/delete"
+		var request = new XMLHttpRequest();
+		request.open("POST", url);
+		request.setRequestHeader("Content-Type", "application/json");
+
+		//updating once have database information
+		request.onload = function(){
+			if(request.status === 200){
+				var receivedScreenplays = JSON.parse(request.responseText);
+				this.setState({screenplays: receivedScreenplays, currentScreenplay: receivedScreenplays[0]});
+			}
+		}.bind(this);
+
+		request.send(null);
+		},
+
 	render:function(){
 		console.log('rendering')
 		return(
 			<div>
 				<ScreenplaySelect onSelectScreenplay={this.setCurrentScreenplay} screenplays={this.state.screenplays}></ScreenplaySelect>
-				<ScreenplayDisplay screenplay={this.state.currentScreenplay}></ScreenplayDisplay>
+				<ScreenplayDisplay screenplay={this.state.currentScreenplay} onScreenplayDelete={this.handleScreenplayDelete}></ScreenplayDisplay>
 				<ScreenplayCreateForm onScreenplaySubmit={this.handleScreenplaySubmit}></ScreenplayCreateForm>
 			</div>
 		);

@@ -19719,13 +19719,31 @@
 			request.send(JSON.stringify(screenplay));
 		},
 	
+		handleScreenplayDelete: function handleScreenplayDelete(id) {
+			//delete data from database
+			var url = "http://localhost:3000/screenplays/" + id + "/delete";
+			var request = new XMLHttpRequest();
+			request.open("POST", url);
+			request.setRequestHeader("Content-Type", "application/json");
+	
+			//updating once have database information
+			request.onload = function () {
+				if (request.status === 200) {
+					var receivedScreenplays = JSON.parse(request.responseText);
+					this.setState({ screenplays: receivedScreenplays, currentScreenplay: receivedScreenplays[0] });
+				}
+			}.bind(this);
+	
+			request.send(null);
+		},
+	
 		render: function render() {
 			console.log('rendering');
 			return React.createElement(
 				'div',
 				null,
 				React.createElement(ScreenplaySelect, { onSelectScreenplay: this.setCurrentScreenplay, screenplays: this.state.screenplays }),
-				React.createElement(ScreenplayDisplay, { screenplay: this.state.currentScreenplay }),
+				React.createElement(ScreenplayDisplay, { screenplay: this.state.currentScreenplay, onScreenplayDelete: this.handleScreenplayDelete }),
 				React.createElement(ScreenplayCreateForm, { onScreenplaySubmit: this.handleScreenplaySubmit })
 			);
 		}
@@ -19926,6 +19944,10 @@
 		displayName: "ScreenplayDisplay",
 	
 	
+		handleDelete: function handleDelete() {
+			this.props.onScreenplayDelete(this.props.screenplay._id);
+		},
+	
 		render: function render() {
 			var screenplayDetails = this.props.screenplay || {};
 	
@@ -19972,9 +19994,15 @@
 					" ",
 					screenplayDetails.logline,
 					" "
+				),
+				React.createElement(
+					"button",
+					{ onClick: this.handleDelete },
+					"Delete Screenplay?"
 				)
 			);
 		}
+	
 	});
 	
 	module.exports = ScreenplayDisplay;
