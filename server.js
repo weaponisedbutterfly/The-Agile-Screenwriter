@@ -5,7 +5,7 @@ var Screenplay = require('./models/screenplay');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
-mongoose.connect('mongodb://localhost/ag_screen_app');
+// mongoose.connect('mongodb://localhost/ag_screen_app');
 
 var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/ag_screen_app';
 moongoose.connect(mongoUri);
