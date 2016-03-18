@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 
 mongoose.connect('mongodb://localhost/ag_screen_app');
 
+var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/ag_screen_app';
+moongoose.connect(mongoUri);
+
 app.use(express.static('client/build'));
 
 app.use(bodyParser.json());
